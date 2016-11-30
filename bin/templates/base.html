@@ -1,0 +1,29 @@
+  <html lang="ja">
+  {% include 'header.html' %}
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <a class="title" href="/"><span class="mdl-layout-title">Bokete Maker</span></a>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+          </nav>
+        </div>
+      </div>
+      {% block content %}
+      {% endblock %}
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='functions.js') }}"></script>
+    {% block script %}
+    {% endblock %}
+  </body>
+  </html>

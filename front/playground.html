@@ -1,0 +1,61 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="Bokete Maker">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <script src="scripts/vue.min.js"></script>
+  <link href="css/base.css" rel="stylesheet">
+
+  <title>Please Please Please Bokete for Me</title>
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <a class="title" href="/"><span class="mdl-layout-title">Bokete Maker</span></a>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+        </nav>
+      </div>
+    </div>
+    <div class="mdl-layout__content mdl-color--grey-100">
+      <div id="content" class="mdl-grid">
+        <div v-show="!isImageUploaded" class="mdl-cell mdl-cell--6-col mdl-cell--1-offset">
+          <h3>画像を選択してください</h3>
+          <form id="myForm" action="" v-on:submit.prevent="onSubmit" method=post enctype=multipart/form-data>
+            <label for="file_image" class="mdl-button mdl-js-button mdl-button--raised">
+              select image
+              <input id="file_image" type=file name=file style="display:none" v-model="file">
+            </label>
+
+            <label for="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" v-bind:disabled="!disableButton">
+              Upload
+              <input id="submit" type=submit value=Upload style="display:none">
+            </label>
+          </form>
+        </div>
+        <div v-show="isImageUploaded" class="mdl-cell mdl-cell--6-col mdl-cell--1-offset">
+          <h3>ボケました <a href="/playground.html">もう一度</a></h3>
+          <div id="gen">
+            <div class="card mdl-color--white mdl-shadow--2dp generated">
+              <img id="uploaded" src="http://0.0.0.0:5000{{ image_src }}" alt="">
+              <div>{{ boke }}<div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="scripts/playground.js"></script>
+
+    </html>

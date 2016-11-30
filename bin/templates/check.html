@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mdl-layout__content mdl-color--grey-100">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--1-offset">
+      <h4>Dataset Statistics of </h4>
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr><th class="mdl-data-table__cell--non-numeric">Kind</th><th>Data</th></tr>
+        </thead>
+        <tbody>
+          <tr><td id="n_vocab" class="mdl-data-table__cell--non-numeric">語彙数</td><td></td></tr>
+        </tbody>
+        <tbody>
+          <tr><td id="train_boke" class="mdl-data-table__cell--non-numeric">訓練データ: ボケの総数</td><td></td></tr>
+        </tbody>
+        <tbody>
+          <tr><td id="train_img" class="mdl-data-table__cell--non-numeric">訓練データ: 画像の総数</td><td></td></tr>
+        </tbody>
+        <tbody>
+          <tr><td id="dev_boke" class="mdl-data-table__cell--non-numeric">評価データ: ボケの総数</td><td></td></tr>
+        </tbody>
+        <tbody>
+          <tr><td id="dev_img" class="mdl-data-table__cell--non-numeric">評価データ: 画像の総数</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content mdl-cell mdl-cell--6-col mdl-cell--1-offset">
+      <h4>Generate from </h4>
+      <label id="dev-or-train" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="data-type">
+        <input type="checkbox" id="data-type" class="mdl-checkbox__input">
+        <span class="mdl-checkbox__label">I want to use training data</span>
+      </label>
+      <button id="btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary mdl-js-ripple-effect">generate</button>
+      <div id="gen"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='check.js') }}"></script>
+{% endblock %}

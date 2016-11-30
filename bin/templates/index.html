@@ -1,0 +1,41 @@
+<html lang="ja">
+{% include 'header.html' %}
+<body>
+  <div class="mdl-layout mdl-js-layout">
+    <main class="mdl-layout__content">
+      <div class="box mdl-color--grey-200">
+        <div class="child-box mdl-grid mdl-shadow--16dp">
+          <div class="mdl-cell mdl-cell--12-col">
+            <h1 class="center">Bokete Maker</h1>
+            <h6 class="center">CNNとRNNでボケさせる</h6>
+          </div>
+          <div class="button mdl-cell mdl-cell--12-col">
+            <a class="no-effect" href="/check">
+              <button class="require-model button-left mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                学習したモデルを確認したい
+              </button>
+            </a>
+            <a class="no-effect" href="/playground">
+              <button class="require-model button-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+                自分の画像でボケて欲しい
+              </button>
+            </a>
+            <button id="load-model" class="no-model button-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+              モデルのロード
+            </button>
+            <div class="mdl-spinner mdl-js-spinner"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='functions.js') }}"></script>
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

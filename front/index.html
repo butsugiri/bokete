@@ -1,0 +1,56 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="Bokete Maker">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <script src="scripts/vue.min.js"></script>
+  <link href="css/base.css" rel="stylesheet">
+
+  <title>Please Please Please Bokete for Me</title>
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout">
+    <main class="mdl-layout__content">
+      <div id="box" class="box mdl-color--grey-200">
+        <div class="child-box mdl-grid mdl-shadow--16dp">
+          <div class="mdl-cell mdl-cell--12-col">
+            <h1 class="center">Bokete Maker</h1>
+            <h6 class="center">CNNとRNNでボケさせる</h6>
+          </div>
+
+          <!-- モデルがロードされている場合はこっち -->
+          <div v-if="model" class="button mdl-cell mdl-cell--12-col">
+            <a class="no-effect" href="/check.html">
+              <button class="button-left mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                学習したモデルを確認したい
+              </button>
+            </a>
+            <a class="no-effect" href="/playground.html">
+              <button class="button-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+                自分の画像でボケて欲しい
+              </button>
+            </a>
+          </div>
+          <!-- モデルがロードされてない場合はこっち -->
+          <div v-else class="button mdl-cell mdl-cell--12-col">
+            <button v-on:click='loadModel' class="button-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+              モデルのロード
+            </button>
+            <div v-show="isModelLoading" class="is-active mdl-spinner mdl-js-spinner"></div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
+</html>

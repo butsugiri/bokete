@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mdl-layout__content mdl-color--grey-100">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--1-offset">
+      {% if file_path is not defined %}
+      <h3>画像を選択してください</h3>
+      <form action="" method=post enctype=multipart/form-data>
+        <input type=file name=file>
+        <input type=submit value=Upload>
+      </form>
+    </div>
+    {% else %}
+    <h3>ボケました <a href="/playground">もう一度</a></h3>
+    <div id="gen">
+      <div class="card mdl-color--white mdl-shadow--2dp generated">
+        <img id="uploaded" src="{{ file_path }}" alt="">
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+  <script src="{{ url_for('static', filename='playground.js') }}"></script>
+{% endblock %}

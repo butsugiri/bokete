@@ -1,0 +1,93 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="Bokete Maker">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <script src="scripts/vue.min.js"></script>
+  <link href="css/base.css" rel="stylesheet">
+
+  <title>Please Please Please Bokete for Me</title>
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <a class="title" href="/"><span class="mdl-layout-title">Bokete Maker</span></a>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+        </nav>
+      </div>
+    </div>
+    <div class="mdl-layout__content mdl-color--grey-100">
+      <div class="mdl-grid">
+        <div id="DataStats" class="mdl-cell mdl-cell--6-col mdl-cell--1-offset">
+          <h4>Dataset Statistics of "{{ datasetName }}"</h4>
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+              <tr><th class="mdl-data-table__cell--non-numeric">Kind</th><th>Data</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="mdl-data-table__cell--non-numeric">語彙数</td><td>{{ stats.n_vocab }}</td></tr>
+            </tbody>
+            <tbody>
+              <tr><td class="mdl-data-table__cell--non-numeric">訓練データ: ボケの総数</td><td>{{ stats.train.total_boke }}</td></tr>
+            </tbody>
+            <tbody>
+              <tr><td class="mdl-data-table__cell--non-numeric">訓練データ: 画像の総数</td><td>{{ stats.train.unique_images }}</td></tr>
+            </tbody>
+            <tbody>
+              <tr><td class="mdl-data-table__cell--non-numeric">評価データ: ボケの総数</td><td>{{ stats.dev.total_boke }}</td></tr>
+            </tbody>
+            <tbody>
+              <tr><td class="mdl-data-table__cell--non-numeric">評価データ: 画像の総数</td><td>{{ stats.dev.unique_images }}</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="content" class="content mdl-cell mdl-cell--10-col mdl-cell--1-offset">
+          <h4>Generate from Dataset: "{{ datasetName }}"</h4>
+          <label id="dev-or-train" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="data-type">
+            <input type="checkbox" v-model="useTrainData" id="data-type" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">Use Training Data</span>
+          </label>
+          <button v-on:click="generateBoke" class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary mdl-js-ripple-effect">generate</button>
+
+          <div v-show="hasGeneratedBoke">
+            <div v-for="boke in bokes" class="card mdl-color--white mdl-shadow--2dp generated">
+              <div id="leftbox">
+                <img :src="boke.img_src">
+              </div>
+
+              <div id="rightbox">
+                <h5>システムの生成したボケ</h5>
+                <span>{{ boke.boke }}</span>
+                <h5>データセットのボケ</h5>
+                <ul id="dataset-boke">
+                  <li v-for="dBoke in boke.dataset_bokes">
+                    {{ dBoke[0] }}
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <button v-on:click="generateBoke" class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary mdl-js-ripple-effect" type="button" name="button">more</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="scripts/check.js"></script>
+
+</html>

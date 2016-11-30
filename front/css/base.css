@@ -1,0 +1,132 @@
+.generated {
+  margin-top: 30px;
+  padding: 5px;
+  letter-spacing: 0.1em;
+  color: #546E7A;
+}
+
+.error {
+  color: #E91E63;
+}
+
+.text {
+  letter-spacing: 0.1em;
+  color: #546E7A;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-height: 300px;
+}
+
+.card {
+  margin-top: 20px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  /* 縦方向中央揃え */
+  justify-content: center;
+  /* 横方向中央揃え */
+  height: 100%;
+}
+
+span {
+  word-wrap: break-word;
+}
+
+#leftbox, #rightbox {
+  display: inline-block;
+  width: 50%;
+}
+
+#rightbox {
+  vertical-align: top;
+  width: 49%;
+}
+
+#leftbox {
+  width: 50%;
+}
+
+.no-effect {
+  text-decoration: none;
+  color:white;
+}
+
+.title {
+  text-decoration: none;
+  color:white;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  /* 縦方向中央揃え */
+  justify-content: center;
+  /* 横方向中央揃え */
+}
+
+h1, h6 {
+  margin: 0px;
+  letter-spacing: 0.05em;
+  color: #546E7A;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  /* 縦方向中央揃え */
+  justify-content: center;
+  /* 横方向中央揃え */
+}
+
+.button-left {
+  margin-right: 10px;
+}
+
+.button-right {
+  margin-left: 10px;
+}
+
+.balloon {
+  margin-top: 15px;
+  position: relative;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #ccc;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.balloon:after {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  margin-left: -10px;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+
+.child-box {
+  width: 50%;
+}
